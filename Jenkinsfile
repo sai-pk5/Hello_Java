@@ -17,7 +17,7 @@ pipeline{
 		     branch 'master';
                    }
             steps{
-                echo 'Hello  .. dear !'
+                  echo 'Hello  .. dear !'
                 }
             }
         stage('Four'){
