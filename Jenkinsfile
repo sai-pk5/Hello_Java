@@ -1,6 +1,6 @@
 pipeline{
     agent any
-    Stages{
+    stages{
         Stage('One'){
             Steps{
                 echo 'Hi! This is sai from netcracker running 1st pipeline from Github'
