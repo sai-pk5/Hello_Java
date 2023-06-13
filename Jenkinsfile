@@ -1,40 +1,40 @@
 pipeline{
     agent any
     stages{
-        Stage('One'){
-            Steps{
+        stage('One'){
+            steps{
                 echo 'Hi! This is sai from netcracker running 1st pipeline from Github'
                  }
             }
-        Stage('Two'){
-            Steps{
+        stage('Two'){
+            steps{
                 input('Do you want to proceed ?')
                  }
             }
-        Stage('Three'){
+        stage('Three'){
             when{
                 not{
-					branch 'master';
+		     branch 'master';
                    }
-            Steps{
+            steps{
                 echo 'Hello  .. dear !'
                 }
             }
-        Stage('Four'){
+        stage('Four'){
             parallel{
-                Stage('Unit Test'){
-                    Steps{
+                stage('Unit Test'){
+                    steps{
                         echo 'Running the Unit Test ..'
                         }
                     }
-                Stage('Integration Test'){
+                stage('Integration Test'){
                     agent{
                         docker{
                             reuseNode false
                             image 'ubuntu'
                             }
                         }
-                    Steps{
+                    steps{
                         echo 'Running the Integration Test'
                         }
                      }
