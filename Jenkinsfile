@@ -11,7 +11,7 @@ pipeline{
                         input('Do you want to proceed ?')
                         }
                  }
-         Stage('Three'){
+          Stage('Three'){
                   when{
                       not{
                               branch 'master';
@@ -20,6 +20,30 @@ pipeline{
                         echo 'Hello  .. dear !'
                         }
                  }
+           Stage('Four'){
+                 parallel{
+                     Stage('Unit Test'){
+                           Steps{
+                               echo 'Running the Unit Test ..'
+                           }
+                       }
+                     Stage('Integration Test'){
+                         agent{
+                             docker{
+                                    reuseNode false
+                                    image 'ubuntu'
+                             }
+                         }
+                         Steps{
+                             echo 'Running the Integration Test'
+                         }
+                     }
+                 }
+             }
+         }
+    }
+}
+
            
           
     
